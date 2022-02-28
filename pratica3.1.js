@@ -45,7 +45,7 @@ const desafio1asRosasNaoFalam = () => {
             masQueBobagem(() => {
                 asRosasNaoFalam(() => {
                     simplesmenteAsRosasExalam(() => {
-                        oPerfumeQueRoubamDeTi(() => { })
+                        oPerfumeQueRoubamDeTi(() => {})
                     })
                 }
                 })
