@@ -149,6 +149,7 @@ console.log(pilha1.remover());
 //=====================================================================================================================
 //exercicio 6
 
+
 const usuarios = [
   { nome: 'Diego', idade: 23, ativo: true },
   { nome: 'Gabriel', idade: 15, ativo: false },
@@ -159,15 +160,14 @@ const usuariosAtivos = []
 const usuariosInativos = []
 
 
-usuarios.forEach(valorAtual => {
+usuarios.filter(valorAtual => {
 
-  if (valorAtual.ativo === true) {
-    usuariosAtivos.push({ 'nome': valorAtual.nome, 'ativo': valorAtual.ativo })
+  if (valorAtual.ativo) {
+    usuariosAtivos.push({valorAtual})
     
-  } else if (valorAtual.ativo === false) {
-    usuariosInativos.push({ 'nome': valorAtual.nome, 'ativo': valorAtual.ativo })
+  } else if (!valorAtual.ativo) {
+    usuariosInativos.push({valorAtual})
   }
 })
 console.log(usuariosAtivos)
 console.log(usuariosInativos)
-
