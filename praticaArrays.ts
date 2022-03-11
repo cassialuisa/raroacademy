@@ -10,11 +10,13 @@ const ingredientes: string[][] = [
   ['pao', 'pão com gergelim'],
 ]
 
-function fazUmBigMac(ingredientes: String[][]): Record<string, string> {
-  return ingredientes.reduce((objeto, ingredientes) => {
-    objeto[ingredientes[0].toString()] = ingredientes[1]
-    return objeto
-  }, {})
+function fazUmBigMac(ingredientes: String[][]) {
+  return ingredientes.reduce(
+    function (acc, valorAtual) {
+      return acc.concat(valorAtual)
+    },
+    []
+  )
 }
 console.log(fazUmBigMac(ingredientes))
 
@@ -62,112 +64,113 @@ const alunos = [
   { nome: 'Ana', nota: 8.7, bolsista: true }
 ];
 
-alunos.sort(function (a, b) {
-  if (a.nota > b.nota) {
-    return 1;
-  }
-  if (a.nota < b.nota) {
-    return -1;
-  }
-  return 0;
-});
-
-let novoAluno = [];
-alunos.forEach(element => {
-  novoAluno.push({ nome: element.nome, nota: element.nota })
-});
-
-console.log(novoAluno);
-
-//========================================================================================================
-//exercicio 5. filas e pilhas
-
-function fila() {
-  const fila = [];
-
-  const adicionar = (elemento) => {
-    fila.push(elemento)
-  };
-
-  const remover = () => {
-    if (fila.length === 0) {
-      return -1
+function orderby() {
+  alunos.sort(function (a, b) {
+    if (a.nota > b.nota) {
+      return 1;
     }
-    const elemento = fila[fila.length]
-    fila.shift(elemento)
-    return fila
-  };
-
-  const print = () => {
-    console.log(fila)
-  }
-  return { adicionar, remover, print };
-}
-
-function pilha() {
-  const pilha = [];
-
-  const adicionar = (elemento) => {
-    pilha.push(elemento)
-  };
-
-  const remover = () => {
-    if (pilha.length === 0) {
-      return -1
+    if (a.nota < b.nota) {
+      return -1;
     }
-    const elemento = pilha[pilha.length]
-    pilha.pop(elemento)
-    return pilha
-  };
+    return 0;
+  });
 
-  const print = () => {
-    console.log(pilha)
+  let novoAluno = [];
+  alunos.forEach(element => {
+    novoAluno.push({ nome: element.nome, nota: element.nota })
+  });
+
+  console.log(novoAluno);
+
+  //========================================================================================================
+  //exercicio 5. filas e pilhas
+
+  function fila() {
+    const fila = [];
+
+    const adicionar = (elemento) => {
+      fila.push(elemento)
+    };
+
+    const remover = () => {
+      if (fila.length === 0) {
+        return -1
+      }
+      const elemento = fila[fila.length]
+      fila.shift(elemento)
+      return fila
+    };
+
+    const print = () => {
+      console.log(fila)
+    }
+    return { adicionar, remover, print };
   }
 
-  return { adicionar, remover, print };
-}
+  function pilha() {
+    const pilha = [];
 
+    const adicionar = (elemento) => {
+      pilha.push(elemento)
+    };
 
-const fila1 = fila();
-fila1.adicionar(1);
-fila1.adicionar(2);
-fila1.adicionar(3);
-fila1.print();
-console.log(fila1.remover());
-console.log(fila1.remover());
-console.log(fila1.remover());
+    const remover = () => {
+      if (pilha.length === 0) {
+        return -1
+      }
+      const elemento = pilha[pilha.length]
+      pilha.pop(elemento)
+      return pilha
+    };
 
-const pilha1 = pilha();
-pilha1.adicionar(1);
-pilha1.adicionar(2);
-pilha1.adicionar(3);
-pilha1.print();
-console.log(pilha1.remover());
-console.log(pilha1.remover());
-console.log(pilha1.remover());
+    const print = () => {
+      console.log(pilha)
+    }
 
-//=====================================================================================================================
-//exercicio 6
-
-
-const usuarios = [
-  { nome: 'Diego', idade: 23, ativo: true },
-  { nome: 'Gabriel', idade: 15, ativo: false },
-  { nome: 'Lucas', idade: 30, ativo: false },
-];
-
-const usuariosAtivos = []
-const usuariosInativos = []
-
-
-usuarios.filter(valorAtual => {
-
-  if (valorAtual.ativo) {
-    usuariosAtivos.push({valorAtual})
-    
-  } else if (!valorAtual.ativo) {
-    usuariosInativos.push({valorAtual})
+    return { adicionar, remover, print };
   }
-})
-console.log(usuariosAtivos)
-console.log(usuariosInativos)
+
+
+  const fila1 = fila();
+  fila1.adicionar(1);
+  fila1.adicionar(2);
+  fila1.adicionar(3);
+  fila1.print();
+  console.log(fila1.remover());
+  console.log(fila1.remover());
+  console.log(fila1.remover());
+
+  const pilha1 = pilha();
+  pilha1.adicionar(1);
+  pilha1.adicionar(2);
+  pilha1.adicionar(3);
+  pilha1.print();
+  console.log(pilha1.remover());
+  console.log(pilha1.remover());
+  console.log(pilha1.remover());
+
+  //=====================================================================================================================
+  //exercicio 6
+
+
+  const usuarios = [
+    { nome: 'Diego', idade: 23, ativo: true },
+    { nome: 'Gabriel', idade: 15, ativo: false },
+    { nome: 'Lucas', idade: 30, ativo: false },
+  ];
+
+  const usuariosAtivos = []
+  const usuariosInativos = []
+
+
+  usuarios.filter(valorAtual => {
+
+    if (valorAtual.ativo) {
+      usuariosAtivos.push({ valorAtual })
+
+    } else if (!valorAtual.ativo) {
+      usuariosInativos.push({ valorAtual })
+    }
+  })
+  console.log(usuariosAtivos)
+  console.log(usuariosInativos)
