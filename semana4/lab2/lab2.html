@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style-lab2.css'>
+    <title>Lab 1 - Cássia Luísa</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+
+    <script type="text/babel">
+        const rootElement = document.getElementById('root')
+
+        const Card = ({ foto, nome, profissao }) => (
+            <div class="main">
+                <div class="card">
+                    <div class="fotoenome">
+                        <img src={foto} class="profilepic" />
+                        <div class="nome_profissao">
+                            <p class="p1">{nome}</p>
+                            <p class="p2">{profissao}</p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="b1">
+                            <p>Call</p>
+                        </div>
+                        <div class="b2">
+                            <p>Send e-mail</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+        const Cabecalho = () => (
+            <div class="cabecalho">
+                <div class="contacts">
+                    <h2>contacts</h2>
+                </div>
+                <div class="search">
+                    <h2>Search</h2>
+                </div>
+            </div>
+        )
+        const MainContainer = ({ children }) => (
+            <div class="maincontainer">
+                {children}
+            </div>
+        )
+        const MainCard = ({ children }) => (
+            <div class="main">
+                {children}
+            </div>
+        )
+
+        const element = (
+            <MainContainer>
+                <Cabecalho />
+
+                <MainCard>
+                    <Card
+                        foto="joseph-gonzalez-iFgRcqHznqg-unsplash.jpg"
+                        nome="Tom James"
+                        profissao="Programmer"
+                    />
+                    <Card
+                        foto="michael-dam-mEZ3PoFGs_k-unsplash.jpg"
+                        nome="Alessa Smith"
+                        profissao="Manager"
+                    />
+                    <Card
+                        foto="rikonavt-3eebt4Xsg_c-unsplash.jpg"
+                        nome="Kate Minard"
+                        profissao="Web Designer"
+                    />
+                    <Card
+                        foto="ben-parker-OhKElOkQ3RE-unsplash.jpg"
+                        nome="John Tudor"
+                        profissao="Database admin"
+                    />
+                </MainCard>
+                <h4>We found 23 contacts</h4>
+            </MainContainer>
+        )
+        ReactDOM.render(element, rootElement);
+    </script>
+</body>
+
+</html>
